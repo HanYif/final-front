@@ -8,20 +8,20 @@
             <el-input v-model="formLogin.name"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="password">
-            <el-input v-model="formLogin.password"></el-input>
+            <el-input v-model="formLogin.password" type="password"></el-input>
           </el-form-item>
           <el-form-item label="确认密码" prop="checkPassword">
-            <el-input v-model="formLogin.checkPassword"></el-input>
+            <el-input v-model="formLogin.checkPassword" type="password"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="login">登录</el-button>
-            <el-button @click="resetForm">取消</el-button>
+            <el-button @click="resetForm">重置</el-button>
           </el-form-item>
-          <el-form-item>
+          <!--el-form-item>
             <span style="cursor:pointer;" @click="GoGithub">
               <i class="el-icon-fa-github"></i>
             </span>
-          </el-form-item>
+          </el-form-item-->
           <el-form-item>
             <router-link to="/register">
               <el-button type="">没有账号，立即注册<i class="el-icon-arrow-right el-icon--right"></i></el-button>
