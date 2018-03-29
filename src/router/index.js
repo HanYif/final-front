@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import store from '../store/index.js'
+import Nav from '../views/Nav'
 import Home from '../views/Home'
+import Question from '../views/Question'
+import Write from '../views/Write'
+import Job from '../views/Job'
+import User from '../views/User'
 import Login from '../views/Login'
 import Register from '../views/Register'
 import Github from '../views/Github'
@@ -11,12 +16,49 @@ Vue.use(Router)
 const router = new Router({
   routes: [{
     path: '/',
-    name: 'home',
+    name: 'Nav',
     // 路由元信息 meta
     meta: {
       requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
     },
-    component: Home
+    component: Nav,
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: Home
+      },
+      {
+        path: '/question',
+        name: 'question',
+        component: Question
+      },
+      {
+        path: '/write',
+        name: 'write',
+        component: Write
+      },
+      {
+        path: '/job',
+        name: 'job',
+        component: Job
+      },
+      {
+        path: '/user',
+        name: 'user',
+        component: User
+      }
+      // {
+      //   path: '/job',
+      //   name: 'job',
+      //   component: Job,
+      // },
+      // {
+      //   path: '/user',
+      //   name: 'user',
+      //   component: User,
+      // }
+    ]
   }, {
     path: '/login',
     name: 'login',

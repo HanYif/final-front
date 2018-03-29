@@ -7,10 +7,10 @@
             <el-input v-model="formRegister.name"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="password">
-            <el-input v-model="formRegister.password"></el-input>
+            <el-input v-model="formRegister.password" type="password"></el-input>
           </el-form-item>
           <el-form-item label="确认密码" prop="checkPassword">
-            <el-input v-model="formRegister.checkPassword"></el-input>
+            <el-input v-model="formRegister.checkPassword" type="password"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="addUser">立即注册</el-button>
