@@ -1,28 +1,28 @@
 <template>
   <div class="post-list">
-    <li v-for="post in postList" :key="post.id" class="post-item">
-      <a class="title" href="/">{{post.title}}</a>
-      <div class="tag">{{post.tag}}</div>
+    <li v-for="post in postList" :key="post.title" class="post-item">
       <div class="content clearfix">
         <img class="icon" :src="post.icon"></img>
         <div class="detail">
           <div class="detail-head">
-            <a href="/" class="detail-head__user clr-br">{{post.user_nickname}}</a>
+            <span href="/" class="detail-head__user clr-br">{{post.userName}}</span>
             <span class="detail-head__time">发布于{{post.time}}</span>
           </div>
           <div class="detail-content">
-            <a href="/" class="detail-main">
+            <span href="/" class="detail-main">
               {{post.desc}}
-            </a>
-            <div class="detail-rt">
-              <span class="mg-r-5" v-if="post.answer_count !== undefined">回复数 {{post.answer_count}} </span>
-              <span class="mg-r-5" v-if="post.view_count !== undefined">浏览数 {{post.view_count}} </span>
-              <span v-if="post.vote_count !== undefined">赞数 {{post.vote_count}} </span>
-            </div>
+            </span>
           </div>
         </div>
       </div>
     </li>
+    <div style="margin-top: 12px;">
+      <el-pagination
+        background
+        layout="prev, pager, next"
+        :total="100">
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -57,15 +57,17 @@ a:hover {
 .detail {
   position: relative;
   top: 5px;
-  padding-left: 5px;
 }
 .post-list {
   padding: 20px;
   margin: auto;
   font-size: 14px;
-  text-align: left;
+  text-align: center;
 }
 
+.post-item {
+  text-align: left;
+}
 .post-item p {
   margin: 3px;
 }
@@ -96,7 +98,7 @@ a:hover {
 }
 .detail {
   float: left;
-  width: 850px;
+  width: 800px;
   font-size: 12px;
 }
 .detail-head {

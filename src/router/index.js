@@ -1,12 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import store from '../store/index.js'
 import Nav from '../views/Nav'
 import Home from '../views/Home'
 import Question from '../views/Question'
+import Note from '../views/Note'
+import NoteDetail from '../views/NoteDetail'
 import Write from '../views/Write'
 import Job from '../views/Job'
 import User from '../views/User'
+import WriteJob from '../views/WriteJob'
+import JobDetail from '../views/JobDetail'
 import Login from '../views/Login'
 import Register from '../views/Register'
 import Github from '../views/Github'
@@ -34,8 +37,13 @@ const router = new Router({
         component: Question
       },
       {
-        path: '/write',
-        name: 'write',
+        path: '/write-ask',
+        name: 'write-ask',
+        component: Write
+      },
+      {
+        path: '/write-note',
+        name: 'write-note',
         component: Write
       },
       {
@@ -47,17 +55,27 @@ const router = new Router({
         path: '/user',
         name: 'user',
         component: User
+      },
+      {
+        path: '/note',
+        name: 'note',
+        component: Note
+      },
+      {
+        path: '/note-detail',
+        name: 'note-detail',
+        component: NoteDetail
+      },
+      {
+        path: '/write-job',
+        name: 'write-job',
+        component: WriteJob
+      },
+      {
+        path: '/job-detail',
+        name: 'job-detail',
+        component: JobDetail
       }
-      // {
-      //   path: '/job',
-      //   name: 'job',
-      //   component: Job,
-      // },
-      // {
-      //   path: '/user',
-      //   name: 'user',
-      //   component: User,
-      // }
     ]
   }, {
     path: '/login',

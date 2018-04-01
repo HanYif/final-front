@@ -3,10 +3,11 @@
     <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
       <el-menu-item index="1" :style="{marginLeft: '35%'}"><router-link to="/home">主页</router-link></el-menu-item>
       <el-menu-item index="2"><router-link to="/question">提问</router-link></el-menu-item>
-      <el-menu-item index="3"><router-link to="/note">笔记</router-link></el-menu-item>
+      <el-menu-item index="3"><router-link to="/note">经验</router-link></el-menu-item>
       <el-menu-item index="4"><router-link to="/job">求职</router-link></el-menu-item>
-      <el-menu-item index="5"><router-link to="/user">个人中心</router-link></el-menu-item>
-      <el-menu-item index="6" :style="{float: 'right'}">
+      <el-menu-item index="5"><router-link to="/collect">收藏</router-link></el-menu-item>
+      <el-menu-item index="6"><router-link to="/user">个人中心</router-link></el-menu-item>
+      <el-menu-item index="7" :style="{float: 'right'}">
         <router-link v-show="!user.name" to="/login">登录</router-link>
         <el-dropdown @command="loginOut">
           <span :style="{color:'#FFF'}" v-show="user.name">

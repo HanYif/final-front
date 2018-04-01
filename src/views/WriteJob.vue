@@ -2,45 +2,46 @@
   <div class="user bg-white">
     <el-card class="box-card">
       <div slot="header" class="header">
-        <span>个人信息</span>
+        <span>发布职位</span>
         <!--el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button-->
       </div>
-      <el-form :model="userForm" :rules="rules" ref="userForm" label-width="90px" class="user-form">
-        <el-form-item label="头像" prop="icon" style="text-align: left;">
+      <el-form :model="jobForm" :rules="rules" ref="jobForm" label-width="90px" class="user-form">
+        <el-form-item label="职位名称" prop="name">
+          <el-input v-model="jobForm.name" placeholder="填写名称"></el-input>
+        </el-form-item>
+        <el-form-item label="发布者" prop="publisher">
+          <el-input v-model="jobForm.publisher" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="职位类型" prop="type">
+          <el-input v-model="jobForm.type" placeholder="实习，全职..."></el-input>
+        </el-form-item>
+        <el-form-item label="职位描述" prop="detail">
+          <el-input type="textarea" v-model="jobForm.detail" placeholder="填写职位具体要求"></el-input>
+        </el-form-item>
+        <el-form-item label="截止时间" prop="deadline">
+          <el-date-picker type="date" placeholder="截止日期" v-model="jobForm.deadline" style="width: 100%;"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="公司" prop="company">
+          <el-input v-model="jobForm.company" placeholder="填写公司"></el-input>
+        </el-form-item>
+        <el-form-item label="公司简介" prop="company">
+          <el-input type="textarea" v-model="jobForm.company" placeholder="填写公司概况"></el-input>
+        </el-form-item>
+        <el-form-item label="公司图标" prop="icon" style="text-align: left;">
           <el-upload
             action="https://jsonplaceholder.typicode.com/posts/"
             list-type="picture-card"
             :on-preview="handlePictureCardPreview"
-            :on-remove="handleRemove" v-if="mode === 'write'">
+            :on-remove="handleRemove">
             <i class="el-icon-plus"></i>
           </el-upload>
-          <el-dialog :visible.sync="dialogVisible" v-if="mode === 'write'">
+          <el-dialog :visible.sync="dialogVisible">
             <img width="100%" :src="dialogImageUrl" alt="">
           </el-dialog>
-          <img :src="userForm.icon" class="user-icon"></img>
-        </el-form-item>
-        <el-form-item label="昵称" prop="name">
-          <el-input v-model="userForm.name" placeholder="填写昵称" :disabled="mode === 'read'"></el-input>
-        </el-form-item>
-        <el-form-item label="用户身份" prop="type">
-          <el-input v-model="userForm.type" disabled></el-input>
-        </el-form-item>
-        <el-form-item label="职位" prop="job">
-          <el-input v-model="userForm.job" placeholder="填写职位" :disabled="mode === 'read'"></el-input>
-        </el-form-item>
-        <el-form-item label="公司" prop="company">
-          <el-input v-model="userForm.company" placeholder="填写公司" :disabled="mode === 'read'"></el-input>
-        </el-form-item>
-        <el-form-item label="个人介绍" prop="introduce">
-          <el-input v-model="userForm.introduce" placeholder="填写职业技能、擅长的事情、喜欢的事情" :disabled="mode === 'read'"></el-input>
-        </el-form-item>
-        <el-form-item label="个人主页" prop="url">
-          <el-input v-model="userForm.url" placeholder="填写个人主页" :disabled="mode === 'read'"></el-input>
         </el-form-item>
         <el-form-item class="mg-t">
-          <el-button type="primary" @click="onSubmit('userForm')" v-if="mode === 'write'">提交</el-button>
-          <el-button v-if="mode === 'write'">取消</el-button>
-          <el-button v-else @click="onBack()">返回</el-button>
+          <el-button type="primary" @click="onSubmit('userForm')">提交</el-button>
+          <el-button>取消</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -69,46 +70,19 @@
       return {
         mode: 'read',
         dialogImageUrl: '',
-        userForm: {
+        jobForm: {
           name: '',
-          job: '',
-          introduce: '',
+          publisher: '雷军',
+          type: '',
+          detail: '',
           company: '',
-          url: '',
-          type: '管理员',
-          icon: '../../static/Home/res/cock.jpg'
+          companyDetail: '',
+          companyIcon: '',
+          publishTime: ''
         },
         user: {
           name: ''
         },
-        jobList: [
-          {
-            company: '小米',
-            neededJob: '硬件工程师',
-            area: '北京',
-            hot: 251,
-            icon: '../../static/Home/res/mi.jpg'
-          }, {
-            company: '阿里',
-            neededJob: '软件工程师',
-            area: '北京',
-            hot: 1751,
-            icon: '../../static/Home/res/ali.jpg'
-          }, {
-            company: '京东',
-            neededJob: '前端开发工程师',
-            area: '北京',
-            hot: 2093,
-            icon: '../../static/Home/res/jd.jpg'
-          }, {
-            company: '腾讯',
-            neededJob: 'C++后台开发',
-            area: '北京',
-            hot: 751,
-            icon: '../../static/Home/res/tx.jpg'
-          }
-        ],
-        jobList1: [],
         dialogVisible: false,
         rules: {
           name: [{
@@ -220,5 +194,11 @@ img {
 .header {
   font-size: 1.5em;
   text-align: left;
+}
+
+.el-upload {
+  width: 50px;
+  height: 50px;
+  line-height: 60px;
 }
 </style>

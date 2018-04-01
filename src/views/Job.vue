@@ -1,5 +1,13 @@
 <template>
-  <div class="job bg-white">
+  <div class="job">
+    <div class="for-ask">
+      <img class="img" src="../../static/Home/res/cock.jpg"></img>
+      <li class="to-ask">
+        <img src="https://gold-cdn.xitu.io/v3/static/img/write-icon.b3ba8ac.svg" class="icon"></img>
+        <a href="/#/write-job">发布职位</a>
+      </li>
+      <!--a href="/draft" class="draft">草稿</a-->
+    </div>
     <el-tabs type="border-card" class="border-card">
       <el-tab-pane label="热门职位">
         <div class="job-list-container">
@@ -7,7 +15,7 @@
             <a href="/" class="job-name">{{job.neededJob}}</a>
             <a href="/" class="job-company">{{job.company}}</a>
             <div class="job-area">{{job.area}}</div>
-            <img :src="job.icon"></img>
+            <img :src="job.icon" class="job-img"></img>
           </div>
         </div>
         <el-pagination
@@ -23,7 +31,7 @@
             <a href="/" class="job-name">{{job.neededJob}}</a>
             <a href="/" class="job-company">{{job.company}}</a>
             <div class="job-area">{{job.area}}</div>
-            <img :src="job.icon"></img>
+            <img :src="job.icon" class="job-img"></img>
           </div>
         </div>
         <el-pagination
@@ -34,7 +42,6 @@
         </el-pagination>
       </el-tab-pane>
     </el-tabs>
-    
     </div>
   </div>
 </template>
@@ -128,6 +135,9 @@
 
 
 <style scoped>
+li {
+  list-style-type: none;
+}
 a {
   color: #007fff;
   color: black;
@@ -135,7 +145,7 @@ a {
 a:hover {
   color: #25bb9b;
 }
-img {
+.job-img {
   width: 70px;
   height: 70px;
 }
@@ -150,11 +160,13 @@ img {
 }
 
 .job {
-  padding: 20px 0;
+  padding: 15px 0;
+  position: relative;
 }
 .border-card {
-  width: 1200px;
+  width: 960px;
   margin: auto;
+  position: relative;
 }
 .job-list-container {
   margin: auto;
@@ -163,7 +175,7 @@ img {
   display: inline-block;
   box-sizing: border-box;
   position: relative;
-  width: 500px;
+  width: 400px;
   height: 100px;
   border-bottom: dashed 1px #eaeaea;
   border-right: dashed 1px #eaeaea;
@@ -188,17 +200,32 @@ img {
 }
 .job-company {
   font-size: 16px;
-  color: #25bb9b;
+  color: #67b9ff!important;
 }
 
 
-
-
-
-
-
-
-
-
-
+.for-ask {
+  background-color: white;
+  height: 50px;
+  width: 960px;
+  margin: 0 auto 12px auto;
+}
+.for-ask .img {
+  height: 50px!important;
+  width: 50px!important;
+  float: left;
+  border-radius: 2px 0 0 2px;
+}
+.to-ask {
+  position: relative;
+  left: 40px;
+  top: 15px;
+  text-align: left;
+}
+.to-ask a {
+  position: relative;
+  top: -6px;
+  text-decoration: none;
+  font-size: 14px;
+}
 </style>

@@ -1,6 +1,8 @@
 <template>
   <!-- bidirectional data binding（双向数据绑定） -->
   <el-form ref="form" :model="form" :rules="rules" id="form" class="bg-gray">
+    <div v-if="mode === 'ask'" class="header">发布提问</div>
+    <div v-if="mode === 'note'" class="header">发布经验</div>
     <el-form-item prop="title">
       <el-input v-model="form.title" placeholder="标题"></el-input>
     </el-form-item>
@@ -100,10 +102,21 @@
     computed: {
       editor () {
         return this.$refs.myQuillEditor.quill
+      },
+      mode () {
+        let res = ''
+        if (this.$route.name === 'write-note') {
+          res = 'note'
+        } else {
+          res = 'ask'
+        }
+        return res
       }
     },
     mounted () {
       console.log('this is current quill instance object', this.editor)
+      console.log('mode', this.mode)
+      console.log(this.$route.name)
     }
   }
 </script>
@@ -121,5 +134,10 @@
 }
 .quill-editor {
   background-color: white;
+}
+.header {
+  text-align: left;
+  margin: 20px 0;
+  font-size: 20px;
 }
 </style>

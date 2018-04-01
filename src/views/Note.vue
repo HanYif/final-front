@@ -6,49 +6,18 @@
           <img class="img" src="../../static/Home/res/cock.jpg"></img>
           <li class="to-ask">
             <img src="https://gold-cdn.xitu.io/v3/static/img/write-icon.b3ba8ac.svg" class="icon"></img>
-            <a href="/#/write-ask">发起提问</a>
+            <a href="/#/write-note">新建经验</a>
           </li>
           <!--a href="/draft" class="draft">草稿</a-->
         </div>
         <div class="note-list bg-white">
-          <post-list :postList="showQuestionList"></post-list>
+          <post-list :postList="postList"></post-list>
           <div style="margin: auto;">
             <el-pagination
               background
               layout="prev, pager, next"
-              :total="totalPageSize"
-              @current-change="changePage"
-              >
+              :total="100">
             </el-pagination>
-          </div>
-        </div>
-      </div>
-      <div class="aside">
-        <div class="hot-ques-container bg-white">
-          <h3>热门问题</h3>
-          <div class="hot-ques">
-            <div v-for="ques in hotQuestionList" class="hot-ques__item">
-              <a href="/" class="ques-title">{{ques.title}}</a>
-              <div>
-                <span>{{ques.answer_count}}回复</span>
-                <span class="fl-r">发布于{{ques.time}}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hot-user-container bg-white">
-          <h3>热心用户</h3>
-          <div class="hot-user">
-            <div v-for="(user, index) in userList" class="hot-user__item">
-              <div class="rank" :class="{'first': index===0, 'second': index===1, 'third': index===2}">{{index + 1}}</div>
-              <img class="head" :src="user.icon"></img>
-              <a class="ques-title" href="/">{{user.nickname}}</a>
-              <div class="user-info">
-                <span class="title">{{user.company}}</span>
-                <span class="answer-count fl-r">{{user.answer_count}}回答</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -69,11 +38,6 @@
     data () {
       return {
         activeIndex: '2',
-        quesParams: {
-          pageNum: 1,
-          pageSize: 10
-        },
-        totalPageSize: 1,
         user: {
           name: ''
         },
@@ -150,25 +114,123 @@
             icon: '../../static/Home/res/tx.jpg'
           }
         ],
-        questionList: [],
-        showQuestionList: [],
-        hotQuestionList: []
+        postList: [
+          {
+            title: '怎样找到一份暑假实习？',
+            tag: '实习',
+            icon: '../../static/Home/res/ali.jpg',
+            userName: '卢本伟',
+            desc: '五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~',
+            time: '2018-01-01 01:27:30',
+            answerCount: 10,
+            viewCount: 127,
+            voteCount: 11
+          },
+          {
+            title: '实习？',
+            tag: '实习',
+            icon: '../../static/Home/res/ali.jpg',
+            userName: '卢本伟',
+            desc: '五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~',
+            time: '2018-01-01 01:27:30',
+            answerCount: 10,
+            viewCount: 127,
+            voteCount: 11
+          },
+          {
+            title: '怎样找到一份暑假实习？',
+            tag: '实习',
+            icon: '../../static/Home/res/ali.jpg',
+            userName: '卢本伟',
+            desc: '五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~',
+            time: '2018-01-01 01:27:30',
+            answerCount: 10,
+            viewCount: 127,
+            voteCount: 11
+          },
+          {
+            title: '实习？',
+            tag: '实习',
+            icon: '../../static/Home/res/ali.jpg',
+            userName: '卢本伟',
+            desc: '五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~',
+            time: '2018-01-01 01:27:30',
+            answerCount: 10,
+            viewCount: 127,
+            voteCount: 11
+          },
+          {
+            title: '怎样找到一份暑假实习？',
+            tag: '实习',
+            icon: '../../static/Home/res/ali.jpg',
+            userName: '卢本伟',
+            desc: '五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~',
+            time: '2018-01-01 01:27:30',
+            answerCount: 10,
+            viewCount: 127,
+            voteCount: 11
+          },
+          {
+            title: '实习？',
+            tag: '实习',
+            icon: '../../static/Home/res/ali.jpg',
+            userName: '卢本伟',
+            desc: '五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~',
+            time: '2018-01-01 01:27:30',
+            answerCount: 10,
+            viewCount: 127,
+            voteCount: 11
+          },
+          {
+            title: '怎样找到一份暑假实习？',
+            tag: '实习',
+            icon: '../../static/Home/res/ali.jpg',
+            userName: '卢本伟',
+            desc: '五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~',
+            time: '2018-01-01 01:27:30',
+            answerCount: 10,
+            viewCount: 127,
+            voteCount: 11
+          },
+          {
+            title: '实习？',
+            tag: '实习',
+            icon: '../../static/Home/res/ali.jpg',
+            userName: '卢本伟',
+            desc: '五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~',
+            time: '2018-01-01 01:27:30',
+            answerCount: 10,
+            viewCount: 127,
+            voteCount: 11
+          },
+          {
+            title: '怎样找到一份暑假实习？',
+            tag: '实习',
+            icon: '../../static/Home/res/ali.jpg',
+            userName: '卢本伟',
+            desc: '五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~',
+            time: '2018-01-01 01:27:30',
+            answerCount: 10,
+            viewCount: 127,
+            voteCount: 11
+          },
+          {
+            title: '实习？',
+            tag: '实习',
+            icon: '../../static/Home/res/ali.jpg',
+            userName: '卢本伟',
+            desc: '五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~五五开凉了~',
+            time: '2018-01-01 01:27:30',
+            answerCount: 10,
+            viewCount: 127,
+            voteCount: 11
+          }
+        ]
       }
     },
     beforeCreate () {
       // 当主页刷新时，如果服务端设置的token
       // 的时效到了的话，便会提示未登录
-      this.$rest.question.getQuestions().then(res => {
-        this.questionList = res.data
-        this.totalPageSize = res.data.length
-        this.showQuestionList = this.questionList.slice(0, 10)
-      })
-      this.$rest.question.getQuestions({ isHot: 1 }).then(res => {
-        this.hotQuestionList = res.data
-      })
-      this.$rest.user.getUsers({ 'isHot': 1 }).then(res => {
-        this.userList = res.data
-      })
       this.$rest.user.token(null).then(res => {
         if (!res.success) {
           this.userLoginOut()
@@ -187,11 +249,6 @@
     },
     methods: {
       ...mapActions(['userLoginOut']),
-      updateQuestions (params) {
-        let start = (params.pageNum - 1) * params.pageSize
-        this.showQuestionList = this.questionList.slice(start, start + 10)
-        console.log('this.showQuestionList', this.showQuestionList)
-      },
       // 登出loginOut
       loginOut () {
         this.userLoginOut()
@@ -202,11 +259,6 @@
         } else {
           this.$message.success('登出失败')
         }
-      },
-      changePage (currentPage) {
-        this.quesParams.pageNum = currentPage
-        this.updateQuestions(this.quesParams)
-        console.log('currentPage', currentPage)
       }
     }
   }
@@ -249,7 +301,6 @@ li {
   margin: 15px auto;
   text-align: left;
   position: relative;
-  right: 120px;
 }
 
 .for-ask {
